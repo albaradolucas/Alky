@@ -1,16 +1,10 @@
 // Import Libraries
 import axios from 'axios'
 import swAlert from '@sweetalert/with-react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 
 export default function Login () {
     const history = useHistory()
-
-    swAlert(
-        <h2>Welcome! <br />
-            Ready for some movies?
-        </h2>
-    )
 
     const submitHandler = e => {
         e.preventDefault();
@@ -51,8 +45,12 @@ export default function Login () {
             })
     }
 
+    let token = localStorage.getItem('token')
+
     return (
         <>
+            { token && <Redirect to='/listado' />}
+
             <h2>!Devs | Movies</h2>
             <form onSubmit={submitHandler}>
                 <label>
@@ -65,6 +63,7 @@ export default function Login () {
                     <input type="password" name="password" placeholder="Introduce your password"/>
                     <br />
                 </label>
+                <br />
                 <br />
                 <button type="submit">Log in</button>
             </form>

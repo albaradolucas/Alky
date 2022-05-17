@@ -1,5 +1,18 @@
+import { Link } from "react-router-dom"
+
 export default function Header() {
     return (
-        <h2>Soy el header pa</h2>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/listado'>Listado</Link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
     )
 }
